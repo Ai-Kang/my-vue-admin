@@ -1,13 +1,42 @@
-import { ref, computed } from 'vue'
-import { defineStore } from 'pinia'
+import {ref, computed} from 'vue'
+import {defineStore} from 'pinia'
 
-export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
+export const useCounterStore = defineStore("counter", () => {
+    const menuList = ref([
+        {
+            path: "/",
+            name: "home",
+            label: "首页",
+            icon: "home",
+            component: () => import('../views/home/Index.vue'),
+        },
+        {
+            path: "/systemManage",
+            name: "systemManage",
+            label: "系统管理",
+            icon: "user",
+            children: [
+                {
+                    path: "/user",
+                    name: "user",
+                    label: "用户管理",
+                    icon: "user",
+                    component: () => import('../views/home/Index.vue'),
+                }
+            ]
+        }
+    ]);
 
-  function increment() {
-    count.value++
-  }
+    const menuCollapse = ref(false);
 
-  return { count, doubleCount, increment }
+    function setMenuCollapse() {
+        menuCollapse.value = !menuCollapse.value
+    }
+
+
+    return {
+        menuList,
+        menuCollapse,
+        setMenuCollapse,
+    }
 })
