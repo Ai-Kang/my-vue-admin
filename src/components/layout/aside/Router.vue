@@ -2,16 +2,12 @@
   <el-row class="tac">
     <el-col>
       <el-menu
-          default-active="2"
-          class="el-menu-vertical-demo"
+          default-active="0"
+          class="menu"
           :unique-opened="true"
           :router="true"
-
-          @open="handleOpen"
-          @close="handleClose"
+          :collapse="store.menuCollapse"
       >
-        <!--        暂时关闭折叠-->
-        <!--        :collapse="store.menuCollapse"-->
         <template v-for="item in store.menuList" :key="item.path">
           <el-menu-item v-if="!item.children" :index="item.path" :key="item.path">
             <span>{{ item.label }}</span>
@@ -35,8 +31,12 @@ import SubMenu from "@/components/layout/aside/SubMenu.vue";
 let store = useCounterStore()
 </script>
 
-<style scoped>
-.el-menu-vertical-demo {
+<style lang="scss" scoped>
+.menu {
+  background-color: #f3f4f6;
+  overflow-y: auto;
   height: 100vh;
+  width: 150px;
+  color: #fff;
 }
 </style>

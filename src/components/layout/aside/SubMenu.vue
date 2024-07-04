@@ -17,6 +17,8 @@ defineProps(["menus"])
 </script>
 
 
-<style scoped>
-
+<style lang="scss" scoped>
+.el-menu-item,.el-sub-menu{
+  background-color: #f3f4f6;
+}
 </style>

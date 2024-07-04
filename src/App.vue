@@ -1,7 +1,7 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-aside width="200px">
+      <el-aside width="collapse">
         <Router/>
       </el-aside>
       <el-container>
@@ -21,8 +21,10 @@
 import {RouterView} from 'vue-router'
 import Header from "@/components/layout/header/Header.vue";
 import Router from "@/components/layout/aside/Router.vue";
-
 </script>
 
 <style scoped>
+.el-header{
+  --el-header-padding: 0;
+}
 </style>
